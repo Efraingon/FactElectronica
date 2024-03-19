@@ -12,11 +12,11 @@
     <div class="col-md-4">
         <form asp-action="Guardar" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+@*             <div class="form-group">
                 <label asp-for="Consecutivo" class="control-label"></label>
                 <input asp-for="Consecutivo" class="form-control" />
                 <span asp-validation-for="Consecutivo" class="text-danger"></span>
-            </div>
+            </div> *@
             <div class="form-group">
                 <label asp-for="NombreCiudad" class="control-label"></label>
                 <input asp-for="NombreCiudad" class="form-control" />
@@ -34,7 +34,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Regresar a Lista</a>
 </div>
 
 @section Scripts {

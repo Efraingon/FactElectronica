@@ -1,41 +1,156 @@
 ﻿@model IEnumerable<FactElectronica.Models.Ciudad>
-
 @{
     ViewData["Title"] = "Ciudad";
 }
+<style>
+	.modalDialog {
+		position: fixed;
+		font-family: Arial, Helvetica, sans-serif;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(0,0,0,0.8);
+		z-index: 99999;
+		opacity: 0;
+		-webkit-transition: opacity 400ms ease-in;
+		-moz-transition: opacity 400ms ease-in;
+		transition: opacity 400ms ease-in;
+		pointer-events: none;
+	}
 
-<h1>Index</h1>
+		.modalDialog:target {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		.modalDialog > div {
+			width: 700px;
+			position: relative;
+			margin: 10% auto;
+			padding: 5px 20px 13px 20px;
+			border-radius: 10px;
+			background: #fff;
+			background: -moz-linear-gradient(#fff, #999);
+			background: -webkit-linear-gradient(#fff, #999);
+			background: -o-linear-gradient(#fff, #999);
+			-webkit-transition: opacity 400ms ease-in;
+			-moz-transition: opacity 400ms ease-in;
+			transition: opacity 400ms ease-in;
+		}
+
+	.close {
+		background: #606061;
+		color: #FFFFFF;
+		line-height: 25px;
+		position: absolute;
+		right: -12px;
+		text-align: center;
+		top: -10px;
+		width: 24px;
+		text-decoration: none;
+		font-weight: bold;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 12px;
+		border-radius: 12px;
+		-moz-box-shadow: 1px 1px 3px #000;
+		-webkit-box-shadow: 1px 1px 3px #000;
+		box-shadow: 1px 1px 3px #000;
+	}
+
+		.close:hover {
+			background: #00d9ff;
+		}
+
+</style>
+
+<h1>Listar ciudades</h1>
 
 <p>
-    <a asp-action="Guardar">Crear Nuevo</a>
+    @* <a asp-action="GuardarModal">Crear</a> *@
+
+	<a href="#openModal">Crear</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NombreCiudad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FldOrigen)
+                @* @Html.DisplayNameFor(model => model.NombreCiudad) *@
+				Nombre
             </th>
             <th></th>
         </tr>
     </thead>
+	<br />
     <tbody>
-@foreach (var item in Model) {
+		@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.NombreCiudad)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FldOrigen)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Consecutivo">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Consecutivo">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Consecutivo">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Consecutivo">Actualizar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Consecutivo">Eliminar</a>
             </td>
         </tr>
-}
+		}
     </tbody>
 </table>
+
+<div id="openModal" class="modalDialog">
+    <h1>Guardar</h1>
+
+    <h4>Ciudad</h4>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Guardar" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+					<br />
+					@* <label asp-for="First().NombreCiudad"></label> *@
+					
+					<label class="control-label">
+						Ciudad
+					</label>
+					<input asp-for="First().NombreCiudad" class="form-control" />
+					<span asp-validation-for="First().NombreCiudad" class="text-danger"></span>
+                </div>
+				<br />
+				<br />
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
+                <div class="form-group">
+                    <label class="text-success">@ViewBag.mensaje</label>
+                </div>
+
+            </form>
+			<br />
+			<br />
+			<a asp-action="Index">Regresar a Lista</a>
+			<a href="#close" title="Close" class="close">X</a>
+
+
+
+		</div>
+		<div>
+		</div>
+
+    </div>
+
+
+
+
+    
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

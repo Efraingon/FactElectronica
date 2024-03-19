@@ -3,34 +3,278 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - FactElectronica</title>
+    <title>@ViewData["Title"] - Fact Electronica</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/FactElectronica.styles.css" asp-append-version="true" />
+        
+    <style>
+        a.navbar-brand {
+            white-space: normal;
+            text-align: center;
+            word-break: break-all;
+        }
+
+        a {
+            color: #0077cc;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #1b6ec2;
+            border-color: #1861ac;
+        }
+
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+            color: #fff;
+            background-color: #1b6ec2;
+            border-color: #1861ac;
+        }
+
+        .border-top {
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .box-shadow {
+            box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+        }
+
+        button.accept-policy {
+            font-size: 1rem;
+            line-height: inherit;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            white-space: nowrap;
+            line-height: 60px;
+        }
+
+        body {
+            background: lightgray;
+        }
+
+        .apptivaweb {
+            text-align: center; /* texto centrado*/
+            width: 1470px; /* Ancho del contenedor */
+            height: 100px;/* Alto del contenedor */
+
+            margin: 0 auto; /* contenedor centrado */
+            background: rosybrown; /* color de fondo  (peru, #ff00ff, 255,00,255,1) */
+            padding: 30px; /* espacio entre el contenido y el div*/
+            border: 3px solid black;
+            border-radius: 30px;
+        }
+
+        h1 {
+            color: #04488C;
+            font-size: 15x;
+            font-display:true;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .wrapper {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background: rgba(0,0,0,0.9);
+            width: 100%;
+            position: fixed;
+            z-index: 10;
+        }
+
+        nav {
+            float: left; /* Desplazamos el nav hacia la izquierda */
+        }
+
+            nav ul {
+                list-style: none;
+                overflow: hidden; /* Limpiamos errores de float */
+            }
+
+                nav ul li {
+                    float: left;
+                    font-family: Arial, sans-serif;
+                    font-size: 16px;
+                }
+
+                    nav ul li a {
+                        display: block; /* Convertimos los elementos a en elementos bloque para manipular el padding */
+                        padding: 20px;
+                        color: #fff;
+                        text-decoration: none;
+                    }
+
+                    nav ul li:hover {
+                        background: #3ead47;
+                    }
+
+        .contenido {
+            padding-top: 80px;
+        }
+
+        .vertical-menu {
+            width: 180px;
+        }
+
+            .vertical-menu a {
+                /* background-color: cadetblue; */
+                color: white;
+                display: block;
+                padding: 12px;
+                text-decoration: none;
+            }
+
+                .vertical-menu a:hover {
+                    background-color: rosybrown;
+                    border: 3px solid rosybrown;
+                    border-radius: 30px;
+                }
+
+                .vertical-menu a.active {
+                    background-color: darkblue;
+                    color: white;
+                    background-color: darkblue;
+                    border: 2px solid darkblue;
+                }
+
+        .vertical-menu {
+            background-color: cadetblue;
+            border: 4px solid darkblue;
+            border-radius: 30px;
+        }
+
+
+        /* Clase para el contenedor del menú <nav> */
+        .csMenu {
+            margin: 0;
+            padding: 0;
+            display: block;
+            font-size: 16px;
+            overflow: hidden;
+            background-color: black;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+            /* Contenedores <ul> */
+            .csMenu ul {
+                margin: 0;
+                padding: 0;
+                display: block;
+                list-style: none;
+            }
+            /* Enlaces */
+            .csMenu a {
+                color: white;
+                display: block;
+                padding: 0.6em 0.8em;
+                text-decoration: none;
+            }
+                /* Enlaces hover */
+                .csMenu a:hover {
+                    background-color: white;
+                }
+        /* Distribución horizontal */
+        .mHoriz li {
+            float: left;
+            display: block;
+        }
+        /* Distribución vertical */
+        .mVerti li {
+            width: 10em;
+            display: block;
+            text-align: left;
+        }
+        /* Submenú infinito */
+        .subMenu {
+            position: fixed;
+            display: none !important;
+            background-color: green;
+            box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.55);
+            border: 4px solid darkblue;
+            border-radius: 30px;
+            width: 180px;
+        }
+        /* Submenú infinito hover */
+        li:hover > .subMenu {
+            position: fixed;
+            display: block !important;
+        }
+        /* Submenú infinito enlaces hover  */
+        .subMenu a:hover {
+            background-color: black;
+            width: 180px;
+        }
+        /* Submenú infinito posicionamiento vertical */
+        .mVerti .subMenu {
+            right: 8em;
+            position: fixed;
+        }
+        /* Botón tipo hamburguesa en pantallas pequeñas */
+        #hMenuBtn {
+            display: none;
+        }
+
+
+
+    </style>
+
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FactElectronica</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+    <header class="apptivaweb">
+        
+         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"> 
+            <div class="container-fluid" style="background-color:cadetblue;width:1400px;">
+              <ul id="hMenu" class="mHoriz">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" style="text-decoration: underline;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li><a href="#">Facturación</a>
+                    <li><a href="#">Cliente</a>
+                    <li><a href="#">Productos</a>
+                    <li>
+                        <a href=" #">Matenimiento ▼</a>
+                        <ul class="subMenu">
+                            <li><a asp-area="" asp-controller="Ciudad" asp-action="Index">Ciudad</a></li>
+                            <li><a asp-area="" asp-controller="Ciudad" asp-action="Index">Categorias</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" style="text-decoration: underline;" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+            </ul>
             </div>
         </nav>
+
+        
     </header>
-    <div class="container">
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    <div class="container" style="height:500px;">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -38,7 +282,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - FactElectronica - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; EG - Factura Electronica - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
